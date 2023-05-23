@@ -1,5 +1,5 @@
-import {withEditableUser} from "./withEditableUser.tsx";
 import {IUserInfo} from "./UserInfo.tsx";
+import {withEditableResource} from "./withEditableResource.tsx";
 
 interface IUserInfoForm {
     user: IUserInfo;
@@ -8,7 +8,7 @@ interface IUserInfoForm {
     onResetUser: () => void;
 }
 
-export const UserInfoForm = withEditableUser(({ user, onChangeUser, onSaveUser, onResetUser }: IUserInfoForm) => {
+export const UserInfoForm = withEditableResource(({ user, onChangeUser, onSaveUser, onResetUser }: IUserInfoForm) => {
     const { name, age, hairColor } = user || {};
 
     return user ? (
@@ -28,5 +28,5 @@ export const UserInfoForm = withEditableUser(({ user, onChangeUser, onSaveUser, 
             <button onClick={onResetUser}>Reset</button>
             <button onClick={onSaveUser}>Save</button>
         </>
-    ) : <p>Loading</p>
-}, 1);
+    ) : <p>Loading...</p>
+}, '1', 'users');
